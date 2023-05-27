@@ -22,7 +22,9 @@ app.get('/', async () => {
 app.get('/:id', async (request) => {
   const { id } = request.params as { id: string }
 
-  const product = await prisma.product.findUnique({ where: {id}})
+  const product = await prisma.product.findUnique({ where: { id } })
+  
+  return product
 })
 
 app

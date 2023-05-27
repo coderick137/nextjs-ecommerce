@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "txs watch src/server.ts"
+    "dev": "ts-node  src/server.ts"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +26,5 @@
     "@fastify/cors": "^8.3.0",
     "@prisma/client": "^4.14.1",
     "fastify": "^4.17.0"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
   }
 }
