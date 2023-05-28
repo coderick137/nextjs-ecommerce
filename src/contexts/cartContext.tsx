@@ -1,12 +1,17 @@
 'use client'
 
-import { Product } from '@/@types/productFatchResponse'
+/* eslint-disable prettier/prettier */
+import { CartItem } from '@/@types/cartItem'
 import { createContext, ReactNode, useState } from 'react'
 
-export const CartContext = createContext({
-  cart: [] as Product[],
-  // eslint-disable-next-line prettier/prettier
-  setCart: (value: Product[]) => { },
+export interface CartContextProps {
+  cart: CartItem[]
+  setCart: (value: CartItem[]) => void
+}
+
+export const CartContext = createContext<CartContextProps>({
+  cart: [],
+  setCart: () => { },
 })
 
 interface CartProviderProps {
@@ -14,15 +19,10 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<Product[]>([])
+  const [cart, setCart] = useState<CartItem[]>([])
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        setCart,
-      }}
-    >
+    <CartContext.Provider value={{ cart, setCart }}>
       {children}
     </CartContext.Provider>
   )
