@@ -18,7 +18,7 @@ app.get('/', async () => {
   return allProducts
 })
 
-app.get('/:id', async (request) => {
+app.get('/product:id', async (request) => {
   const { id } = request.params as { id: string }
 
   const product = await prisma.product.findUnique({ where: { id } })

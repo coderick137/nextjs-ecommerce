@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { formatePrice } from '@/utils/formatPrice'
-import { ShoppingCartIcon } from 'lucide-react'
+import { HTMLAttributes } from 'react'
 
-interface CardProductProps {
+interface CardProductProps extends HTMLAttributes<HTMLDivElement> {
   id: string
   title: string
   description: string
@@ -17,10 +17,14 @@ export function ProductCard({
   description,
   image,
   price,
+  ...rest
 }: CardProductProps) {
   return (
     <>
-      <article className=" flex flex-wrap justify-center items-center space-x-4 rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
+      <div
+        className=" flex flex-wrap justify-center items-center space-x-4 rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+        {...rest}
+      >
         <div className="mt-1 p-2">
           <div className="relative flex items-end overflow-hidden rounded-xl">
             <img src={image} alt="Imagem de um produto" />
@@ -31,13 +35,9 @@ export function ProductCard({
             <p className="text-lg font-bold text-blue-500">
               {formatePrice(price)}
             </p>
-            <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-              <ShoppingCartIcon className="w-5 h-5" />
-              <button className="text-sm"></button>
-            </div>
           </div>
         </div>
-      </article>
+      </div>
     </>
   )
 }

@@ -33,5 +33,5 @@ export function useCart() {
     localStorage.setItem('cart', JSON.stringify({ carItems: newCartItems }))
   }
 
-  return { cart, addToCart }
+  return { cart, addToCart, setCart }
 }
