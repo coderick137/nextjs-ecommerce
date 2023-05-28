@@ -12,7 +12,6 @@ app.register(cors, {
   origin: true,
 })
 
-
 app.get('/', async () => {
   const allProducts = await prisma.product.findMany()
 
@@ -23,7 +22,7 @@ app.get('/:id', async (request) => {
   const { id } = request.params as { id: string }
 
   const product = await prisma.product.findUnique({ where: { id } })
-  
+
   return product
 })
 
