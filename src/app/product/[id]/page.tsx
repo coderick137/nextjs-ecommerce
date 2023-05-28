@@ -17,11 +17,13 @@ export default async function ProductDetailsPage({
   const [selectedProduct, setSelectedProduct] = useState<Product>()
 
   useEffect(() => {
-    fetchProductById(params.id)
+    fetchProductById()
   }, [])
 
-  async function fetchProductById(id: string) {
-    const { data } = await axios.get(`http://localhost:3333/product/${id}`)
+  async function fetchProductById() {
+    const { data } = await axios.get(
+      `http://localhost:3333/product/${params.id}`,
+    )
     setSelectedProduct(data)
     console.log(data)
   }
