@@ -6,12 +6,20 @@ export function TabMenu() {
           Produtos
         </h1>
       </div>
-      <div className="flex justify-center space-x-4 mt-4 border-b border-gray-200 pb-4 font-bold text-xl">
-        <span>Todos</span>
-        <span>Novos</span>
+      <div className="flex justify-center space-x-4 mt-4 border-b border-gray-200 pb-14 font-bold text-xl">
+        <span className="border-b-2 border-blue-500 pb-2 cursor-pointer">
+          Todos
+        </span>
+        <span className="border-b-2 border-transparent pb-2 cursor-pointer hover:border-blue-500">
+          Novos
+        </span>
 
-        <span>Mais vendidos</span>
-        <span>Ofertas</span>
+        <span className="border-b-2 border-transparent pb-2 cursor-pointer hover:border-blue-500">
+          Mais vendidos
+        </span>
+        <span className="border-b-2 border-transparent pb-2 cursor-pointer hover:border-blue-500">
+          Ofertas
+        </span>
       </div>
     </>
   )
