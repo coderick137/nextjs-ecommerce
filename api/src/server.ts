@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import { PrismaClient } from '@prisma/client'
 import cors from '@fastify/cors'
+import { z } from 'zod'
 
 const app = fastify()
 
@@ -19,9 +20,16 @@ app.get('/', async () => {
 })
 
 app.get('/product/:id', async (request) => {
-  const { id } = request.params as { id: string }
+  const paramsSchema = z.object({
+    id: z.string().uuid(),
+  })
+  const { id } = paramsSchema.parse(request.params)
 
-  const product = await prisma.product.findUnique({ where: { id } })
+  const product = await prisma.product.findUnique({
+    where: {
+      id,
+    },
+  })
 
   return product
 })
